@@ -34,9 +34,10 @@ export function ProjectFeatures({ project }: ProjectFeaturesProps) {
     <section className="py-24 bg-muted/10">
       <div className="container">
         <GlitchText
-          text="Key Features"
           className="text-3xl font-bold mb-12 text-center"
-        />
+        >
+          Key Features
+        </GlitchText>
 
         <motion.div
           variants={container}

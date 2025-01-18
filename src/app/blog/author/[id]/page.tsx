@@ -4,35 +4,11 @@ import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import { getAuthorById, getPostsByAuthor } from '@/lib/blog-functions';
 import { BlogPostCard } from '@/components/blog-post-card';
-
-interface Author {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  bio: string;
-  socials: {
-    twitter: string;
-    linkedin: string;
-    github: string;
-  };
-}
-
-interface Post {
-  id: number;
-  title: string;
-  slug: string;
-  description: string;
-  content: string;
-  author: Author;
-  publishedAt: string;
-  readTime: string;
-  category: string;
-}
+import { BlogPost, Author } from '@/lib/blog-data';
 
 export default function AuthorPage({ params }: { params: { id: string } }) {
   const [author, setAuthor] = useState<Author | null>(null);
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     const authorId = parseInt(params.id);
@@ -43,7 +19,7 @@ export default function AuthorPage({ params }: { params: { id: string } }) {
     setAuthor(foundAuthor as Author);
 
     const authorPosts = getPostsByAuthor(authorId);
-    setPosts(authorPosts as Post[]);
+    setPosts(authorPosts as BlogPost[]);
   }, [params.id]);
 
   if (!author) {
@@ -60,19 +36,21 @@ export default function AuthorPage({ params }: { params: { id: string } }) {
               {author.name.split(' ').map(n => n[0]).join('')}
             </div>
             <h1 className="text-4xl font-bold text-white mb-4">{author.name}</h1>
-            <p className="text-purple-400 mb-4">{author.role}</p>
+            <p className="text-purple-400 mb-4">{author.title}</p>
             <p className="text-gray-400 mb-6">{author.bio}</p>
             <div className="flex justify-center space-x-4">
-              {Object.entries(author.socials).map(([platform, url]) => (
-                <a
-                  key={platform}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  {platform.charAt(0).toUpperCase() + platform.slice(1)}
-                </a>
+              {Object.entries(author.social).map(([platform, url]) => (
+                url && (
+                  <a
+                    key={platform}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    {platform.charAt(0).toUpperCase() + platform.slice(1)}
+                  </a>
+                )
               ))}
             </div>
           </div>

@@ -4,15 +4,17 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface GlitchTextProps {
-  text: string;
+  children: React.ReactNode;
   className?: string;
 }
 
-export function GlitchText({ text, className }: GlitchTextProps) {
+export function GlitchText({ children, className }: GlitchTextProps) {
+  const text = typeof children === 'string' ? children : '';
+  
   return (
     <div className={cn('relative inline-block', className)}>
       <span className="relative inline-block">
-        {text}
+        {children}
         <span
           className="absolute top-0 left-0 -translate-x-[2px] translate-y-[2px] w-full opacity-50"
           style={{

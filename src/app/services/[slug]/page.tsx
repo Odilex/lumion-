@@ -452,9 +452,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 <service.icon className="w-8 h-8" />
               </div>
               <GlitchText
-                text={service.hero.title}
                 className="text-5xl font-bold mb-6"
-              />
+              >
+                {service.hero.title}
+              </GlitchText>
               <p className="text-xl text-muted-foreground mb-8">
                 {service.hero.description}
               </p>
@@ -483,9 +484,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <div className="container">
           <div className="text-center mb-12">
             <GlitchText
-              text="Key Benefits"
               className="text-3xl font-bold mb-4"
-            />
+            >
+              Key Benefits
+            </GlitchText>
             <p className="text-muted-foreground">
               Why choose our {service.title.toLowerCase()} services
             </p>
@@ -519,9 +521,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <div className="container">
           <div className="text-center mb-12">
             <GlitchText
-              text="Our Process"
               className="text-3xl font-bold mb-4"
-            />
+            >
+              Our Process
+            </GlitchText>
             <p className="text-muted-foreground">
               How we deliver exceptional {service.title.toLowerCase()} solutions
             </p>
@@ -561,9 +564,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <div className="container">
           <div className="text-center mb-12">
             <GlitchText
-              text="Technologies"
               className="text-3xl font-bold mb-4"
-            />
+            >
+              Technologies
+            </GlitchText>
             <p className="text-muted-foreground">
               Tools and technologies we use
             </p>
@@ -601,9 +605,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <div className="container">
           <div className="text-center mb-12">
             <GlitchText
-              text="Frequently Asked Questions"
               className="text-3xl font-bold mb-4"
-            />
+            >
+              Frequently Asked Questions
+            </GlitchText>
             <p className="text-muted-foreground">
               Common questions about our {service.title.toLowerCase()} services
             </p>

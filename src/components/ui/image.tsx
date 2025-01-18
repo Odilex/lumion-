@@ -54,7 +54,7 @@ export function Image({
         height={height}
         className={cn('duration-700 ease-in-out')}
         placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`}
+        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(Number(width), Number(height)))}`}
         onError={() => setError(true)}
       />
     </div>

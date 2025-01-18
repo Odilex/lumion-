@@ -7,9 +7,10 @@ import { cn } from '@/lib/utils';
 interface NeonGlowProps {
   children: React.ReactNode;
   className?: string;
+  color?: string;
 }
 
-export function NeonGlow({ children, className }: NeonGlowProps) {
+export function NeonGlow({ children, className, color = 'text-primary' }: NeonGlowProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
@@ -21,10 +22,11 @@ export function NeonGlow({ children, className }: NeonGlowProps) {
         'hover:border-primary/40',
         'hover:before:bg-primary/10',
         'hover:before:shadow-[0_0_2rem_-0.5rem] hover:before:shadow-primary/30',
+        color,
         className
       )}
-      >
-        {children}
+    >
+      {children}
     </motion.div>
   );
 } 

@@ -3,15 +3,15 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**'
-      }
-    ]
   },
-  trailingSlash: false,
-  skipTrailingSlashRedirect: true
-}
+  webpack: (config) => {
+    config.externals.push({
+      'utf-8-validate': 'commonjs utf-8-validate',
+      'bufferutil': 'commonjs bufferutil',
+      'canvas': 'commonjs canvas',
+    });
+    return config;
+  },
+};
 
-module.exports = nextConfig 
+export default nextConfig; 

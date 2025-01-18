@@ -1,7 +1,4 @@
-"use client";
-
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ArrowLeft, Tag, ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,6 +11,12 @@ interface Props {
   params: {
     slug: string;
   };
+}
+
+export function generateStaticParams() {
+  return projects.map(project => ({
+    slug: project.link.split('/projects/')[1]
+  }));
 }
 
 export default function ProjectPage({ params }: Props) {
@@ -44,18 +47,14 @@ export default function ProjectPage({ params }: Props) {
               Back to Projects
             </Link>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               {project.title}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
               {project.description}
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -80,8 +79,7 @@ export default function ProjectPage({ params }: Props) {
                   Project Overview
                 </GlitchText>
                 <p className="text-muted-foreground">
-                  Detailed description of the project, its goals, and the problems it solves.
-                  This section would be customized for each project with specific details.
+                  {project.overview}
                 </p>
               </section>
 
@@ -90,10 +88,9 @@ export default function ProjectPage({ params }: Props) {
                   Key Features
                 </GlitchText>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                  <li>Feature 1 description</li>
-                  <li>Feature 2 description</li>
-                  <li>Feature 3 description</li>
-                  <li>Feature 4 description</li>
+                  {project.features.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                  ))}
                 </ul>
               </section>
 
@@ -102,8 +99,7 @@ export default function ProjectPage({ params }: Props) {
                   Development Process
                 </GlitchText>
                 <p className="text-muted-foreground">
-                  Description of the development process, challenges faced, and solutions implemented.
-                  This would be customized for each project with specific details.
+                  {project.process}
                 </p>
               </section>
             </div>
@@ -135,7 +131,9 @@ export default function ProjectPage({ params }: Props) {
                 <div className="pt-4 space-y-4">
                   <NeonGlow>
                     <Link
-                      href="#"
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 w-full py-2 font-semibold"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -144,7 +142,9 @@ export default function ProjectPage({ params }: Props) {
                   </NeonGlow>
                   <NeonGlow>
                     <Link
-                      href="#"
+                      href={project.sourceCode}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 w-full py-2 font-semibold"
                     >
                       <Github className="w-4 h-4" />

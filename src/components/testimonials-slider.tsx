@@ -63,9 +63,10 @@ export function TestimonialsSlider() {
       <div className="container relative">
         <div className="text-center mb-16">
           <GlitchText
-            text="What Our Clients Say"
             className="text-4xl md:text-5xl font-bold mb-6"
-          />
+          >
+            What Our Clients Say
+          </GlitchText>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Don't just take our word for it. Here's what our clients have to say about
             working with us.

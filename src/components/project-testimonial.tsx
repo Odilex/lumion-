@@ -27,9 +27,10 @@ export function ProjectTestimonial({ project }: ProjectTestimonialProps) {
     <section className="py-24">
       <div className="container">
         <GlitchText
-          text="Client Testimonial"
           className="text-3xl font-bold mb-12 text-center"
-        />
+        >
+          Client Testimonial
+        </GlitchText>
 
         <CyberCard>
           <div className="relative p-8 md:p-12">

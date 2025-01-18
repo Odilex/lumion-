@@ -34,9 +34,10 @@ export function ProjectTechnologies({ project }: ProjectTechnologiesProps) {
     <section className="py-24 bg-muted/10">
       <div className="container">
         <GlitchText
-          text="Technologies Used"
           className="text-3xl font-bold mb-12 text-center"
-        />
+        >
+          Technologies Used
+        </GlitchText>
 
         <motion.div
           variants={container}

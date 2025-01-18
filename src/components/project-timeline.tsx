@@ -19,9 +19,10 @@ export function ProjectTimeline({ project }: ProjectTimelineProps) {
     <section className="py-24">
       <div className="container">
         <GlitchText
-          text="Project Timeline"
           className="text-3xl font-bold mb-12 text-center"
-        />
+        >
+          Project Timeline
+        </GlitchText>
 
         <div className="relative">
           {/* Vertical line */}

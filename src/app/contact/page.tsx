@@ -78,10 +78,12 @@ export default function ContactPage() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <ParallaxSection
+        image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000"
         title="Contact Us"
         subtitle="Let's Build Rwanda's Digital Future Together"
-        backgroundImage="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000"
-      />
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+      </ParallaxSection>
 
       {/* Contact Information */}
       <section className="py-20">

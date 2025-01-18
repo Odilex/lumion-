@@ -68,9 +68,10 @@ export function ProjectComparison({
     <section className="py-24">
       <div className="container">
         <GlitchText
-          text="Before & After"
           className="text-3xl font-bold mb-12 text-center"
-        />
+        >
+          Before & After
+        </GlitchText>
 
         <CyberCard>
           <div

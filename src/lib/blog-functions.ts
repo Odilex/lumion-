@@ -2,7 +2,7 @@ import { blogPosts, authors } from './blog-data';
 
 export function getAllPosts() {
   return blogPosts.sort((a, b) => 
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }
 
@@ -37,4 +37,12 @@ export function formatDate(date: string): string {
 
 export function getPostsByTag(tag: string) {
   return blogPosts.filter(post => post.tags?.includes(tag));
+}
+
+export function getAllTags() {
+  const tags = new Set<string>();
+  blogPosts.forEach(post => {
+    post.tags?.forEach(tag => tags.add(tag));
+  });
+  return Array.from(tags);
 } 

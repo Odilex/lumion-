@@ -1,13 +1,11 @@
-"use client";
-
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ParallaxSection } from '@/components/parallax-section';
 import { GlitchText } from '@/components/glitch-text';
 import { HologramCard } from '@/components/hologram-card';
 import { NeonGlow } from '@/components/neon-glow';
 import { Globe, Code, Rocket, Users, Calendar, Link as LinkIcon } from 'lucide-react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 // This would typically come from a CMS or API
 const projectData = {
@@ -43,20 +41,17 @@ const projectData = {
   // Add more projects as needed
 };
 
+export function generateStaticParams() {
+  return Object.keys(projectData).map((slug) => ({
+    slug,
+  }));
+}
+
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = projectData[params.slug as keyof typeof projectData];
 
   if (!project) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <Link href="/portfolio" className="text-primary hover:underline">
-            Back to Portfolio
-          </Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   return (
@@ -64,24 +59,21 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <ParallaxSection
         title={project.title}
         subtitle="Case Study"
-        backgroundImage={project.image}
-      />
+        image={project.image}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+      </ParallaxSection>
 
       <section className="py-20">
         <div className="container mx-auto px-4">
           {/* Project Overview */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto mb-20"
-          >
+          <div className="max-w-4xl mx-auto mb-20">
             <GlitchText className="text-3xl md:text-4xl font-bold mb-6">
               Project Overview
             </GlitchText>
             <p className="text-lg text-muted-foreground mb-8">
-                {project.description}
-              </p>
+              {project.description}
+            </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <HologramCard className="p-6">
@@ -112,15 +104,10 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 </a>
               </HologramCard>
             </div>
-            </motion.div>
+          </div>
 
           {/* Technologies */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-4xl mx-auto mb-20"
-          >
+          <div className="max-w-4xl mx-auto mb-20">
             <GlitchText className="text-3xl font-bold mb-6">
               Technologies Used
             </GlitchText>
@@ -130,16 +117,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   {tech}
                 </NeonGlow>
               ))}
+            </div>
           </div>
-          </motion.div>
 
           {/* Features */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="max-w-4xl mx-auto mb-20"
-          >
+          <div className="max-w-4xl mx-auto mb-20">
             <GlitchText className="text-3xl font-bold mb-6">
               Key Features
             </GlitchText>
@@ -149,17 +131,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   <Code className="w-6 h-6 text-primary mb-4" />
                   <p>{feature}</p>
                 </HologramCard>
-            ))}
+              ))}
+            </div>
           </div>
-          </motion.div>
 
           {/* Results */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="max-w-4xl mx-auto mb-20"
-          >
+          <div className="max-w-4xl mx-auto mb-20">
             <GlitchText className="text-3xl font-bold mb-6">
               Project Results
             </GlitchText>
@@ -169,17 +146,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   <Rocket className="w-6 h-6 text-primary mb-4" />
                   <p>{result}</p>
                 </HologramCard>
-            ))}
+              ))}
+            </div>
           </div>
-          </motion.div>
 
           {/* Project Images */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="max-w-4xl mx-auto"
-          >
+          <div className="max-w-4xl mx-auto">
             <GlitchText className="text-3xl font-bold mb-6">
               Project Gallery
             </GlitchText>
@@ -194,7 +166,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 </HologramCard>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </main>

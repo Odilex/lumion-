@@ -75,8 +75,10 @@ export default function PrivacyPage() {
       <ParallaxSection
         title="Privacy Policy"
         subtitle="Your Data Security is Our Priority"
-        backgroundImage="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000"
-      />
+        image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+      </ParallaxSection>
 
       <section className="py-20">
         <div className="container mx-auto px-4">

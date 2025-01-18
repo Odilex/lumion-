@@ -75,8 +75,10 @@ export default function TermsPage() {
       <ParallaxSection
         title="Terms of Service"
         subtitle="Understanding Our Agreement"
-        backgroundImage="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000"
-      />
+        image="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+      </ParallaxSection>
 
       <section className="py-20">
         <div className="container mx-auto px-4">

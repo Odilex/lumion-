@@ -89,7 +89,7 @@ function calculateSimilarityScore(project1: any, project2: any) {
   }
   
   // Technologies overlap
-  const commonTech = project1.technologies.filter(tech => 
+  const commonTech = project1.technologies.filter((tech: string) => 
     project2.technologies.includes(tech)
   );
   score += commonTech.length * 2;

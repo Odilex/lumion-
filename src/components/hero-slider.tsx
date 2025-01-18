@@ -62,12 +62,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = "", delay
         <motion.span
           key={index}
           variants={child}
-          className="inline-block origin-bottom"
-          style={{ 
-            display: 'inline-block',
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden'
-          }}
+          className="inline-block origin-bottom [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
         >
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
@@ -125,9 +120,10 @@ export function HeroSlider() {
         >
           <div className="overflow-hidden">
             <GlitchText
-              text="Transform"
               className="text-5xl md:text-6xl font-bold"
-            />
+            >
+              Transform
+            </GlitchText>
             <div className="flex gap-3 mb-6">
               <AnimatedText
                 text="Your Digital"

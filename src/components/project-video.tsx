@@ -52,9 +52,10 @@ export function ProjectVideo({
     <section className="py-24 bg-muted/10">
       <div className="container">
         <GlitchText
-          text="Project Walkthrough"
           className="text-3xl font-bold mb-12 text-center"
-        />
+        >
+          Project Walkthrough
+        </GlitchText>
 
         <CyberCard>
           <div className="relative aspect-video">

@@ -9,7 +9,7 @@ interface ImageGeneratorProps {
   gradient?: string;
 }
 
-const ImageGenerator = ({ width, height, text, gradient = 'from-purple-500 to-blue-500' }) => {
+const ImageGenerator = ({ width, height, text, gradient = 'from-purple-500 to-blue-500' }: ImageGeneratorProps) => {
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
@@ -50,7 +50,7 @@ const ImageGenerator = ({ width, height, text, gradient = 'from-purple-500 to-bl
 };
 
 // Helper function to generate project images
-const generateProjectImage = (title) => {
+const generateProjectImage = (title: string) => {
   return ImageGenerator({
     width: 800,
     height: 600,
@@ -60,7 +60,7 @@ const generateProjectImage = (title) => {
 };
 
 // Helper function to generate avatar images
-const generateAvatarImage = (initials) => {
+const generateAvatarImage = (initials: string) => {
   return ImageGenerator({
     width: 200,
     height: 200,
